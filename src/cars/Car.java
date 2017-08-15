@@ -16,6 +16,7 @@ public class Car {
     private static int counter=0;
     private int speed;
     private Engine engine;
+    private ServiceBook serviceBook;
     
     public Car (String manufacture, String modelName, int year, int speed, String engine) {
         this.manufacture = manufacture;
@@ -24,6 +25,10 @@ public class Car {
         counter ++;
         this.speed = speed;
         this.engine = new Engine (engine);
+    }
+    
+    public void setServiceBook(ServiceBook serviceBook) {
+        this.serviceBook = serviceBook;
     }
     
     public void setManufacture(String manufacture) {
@@ -63,5 +68,9 @@ public class Car {
         } finally {
             super.finalize();
         }
+    }
+    public String toString () {
+        return "Manufacture: "+manufacture+"\nModel name: "+modelName+
+                "\nService records: "+this.serviceBook.getServiceRecords();
     }
 }
